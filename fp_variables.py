@@ -17,32 +17,94 @@ c = {
 
 bg_color = c['si']
 
-#Assigning the pygame controls used to variables
+#Initialising controls
 key_up = pygame.K_UP
 key_down = pygame.K_DOWN
 key_left = pygame.K_LEFT
 key_right = pygame.K_RIGHT
 
-#The coordinates of the top left of the house
+#Game
 top_left = [100, 100]
 
-#The layout of the house (which will be used to give the appropriate squares values depending on the letter)
+#### Empty House
+##layout = [
+##    "          ",
+##    " r-------l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " --------."
+##]
+####Layout from the game
+"""
+doors:
+    r:
+      T = top on r
+      s = side on r
+"""
 layout = [
     "          ",
-    " r--r----l",
-    " l        ",
-    " r- l    l",
-    " l  l    l",
-    " r- r- --l",
-    " l       l",
-    " ----- --."
+    " r--s-T--l",
+    " l  l L  l",
+    " L s---r_l",
+    " l l   L L",
+    " r--_-r-rl",
+    " l    L Ll",
+    " --_-----."
 ]
+
+"""
+'x':[
+    [top wall, door],
+    [left wall, door]
+"""
+layout_ref = {
+    'r':[
+        [True, False],
+        [True, False]
+    ],
+    's':[
+        [True, False],
+        [True, True]
+    ],
+    'T':[
+        [True, True],
+        [True, False]
+    ],
+    '-':[
+        [True,False],
+        [False,False]
+    ],
+    '_':[
+        [True, True],
+        [False, False]
+    ],
+    'l':[
+        [False, False],
+        [True, False]
+    ],
+    'L':[
+        [False, False],
+        [True, True]
+    ],
+    ' ':[
+        [False, False],
+        [False, False]
+    ],
+    '.':[
+        [False, False],
+        [False, False]
+    ]
+}
+
 number_rows = len(layout)
 number_cols = len(layout[0])
 
 square = [[y for y in range(number_rows)] for x in range(number_cols)]
 
-#FPS settings
+#FPS
 fps = 30
 clock = pygame.time.Clock()
 
