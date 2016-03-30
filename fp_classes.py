@@ -2,6 +2,7 @@ import pygame, sys, random
 from pygame.locals import *
 from fp_variables import *
 
+
 class Square(object):
 
     def __init__(self, x, y, w):
@@ -27,7 +28,11 @@ class Square(object):
             (self.x - self.length/2, self.y - self.length/2, self.length/10, self.length)
         ]
         self.walls[0] = layout_ref[w][0]
-        self.walls[1] = layout_ref[w][1]
+        self.walls[3] = layout_ref[w][1]
+        if y > 0:
+            square[x][y-1].walls[2] = layout_ref[w][0]
+        if x > 0:
+            square[x-1][y].walls[1] = layout_ref[w][1]
         self.wall_color = c['dg']
 
         square[x][y] = self
@@ -68,8 +73,8 @@ class Square(object):
 
             pygame.draw.rect(screen, self.wall_color, self.wall_dimensions[0])
 
-        if self.walls[1][0]:
-            if self.walls[1][1]:
+        if self.walls[3][0]:
+            if self.walls[3][1]:
                 self.wall_color = c['bu']
             else:
                 self.wall_color = c['dg']
