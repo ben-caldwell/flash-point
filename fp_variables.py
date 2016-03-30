@@ -17,15 +17,16 @@ c = {
 
 bg_color = c['si']
 
-#Initialising controls
+#Assigning the pygame controls used to variables
 key_up = pygame.K_UP
 key_down = pygame.K_DOWN
 key_left = pygame.K_LEFT
 key_right = pygame.K_RIGHT
 
-#Game
+#The coordinates of the top left of the house
 top_left = [100, 100]
 
+#The layout of the house (which will be used to give the appropriate squares values depending on the letter)
 layout = [
     "          ",
     " r--r----l",
@@ -39,10 +40,9 @@ layout = [
 number_rows = len(layout)
 number_cols = len(layout[0])
 
-##square = [[y for y in range(1,len(layout))] for x in range(1,len(layout[0]))]
 square = [[y for y in range(number_rows)] for x in range(number_cols)]
 
-#FPS
+#FPS settings
 fps = 30
 clock = pygame.time.Clock()
 
