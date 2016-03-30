@@ -11,8 +11,9 @@ Some information to get started:
 
 Current Tasks:
 
- - Fixing the movement
- - Making the walls stop movement
- - Adding doors
+ - Fixing the movement (Done)
+ - Making the walls stop movement (Done)
+ - Adding doors (Halfway done)
  - Adding fire mechanic
+ - Add comments to code
 
