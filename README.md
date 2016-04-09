@@ -11,5 +11,6 @@ Some information to get started:
 
 Current Tasks:
 
+ - Improving the import structure
  - Adding fire mechanic
 
