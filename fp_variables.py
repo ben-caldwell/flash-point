@@ -1,7 +1,7 @@
 import pygame, sys, random
 from pygame.locals import *
 
-#Initialising colours
+#Initialising colours in a dictionary for easier reference
 c = {
     'wh': (255, 255, 255),
     'bl': (  0,   0,   0),
@@ -17,11 +17,21 @@ c = {
 
 bg_color = c['si']
 
+#Sets the layout of the room, the Square object reads its letter and gives itself values accordingly
 """
+walls:
+    - = top
+    l = left
+    r = corner
+
 doors:
     r:
-      T = top on r
-      s = side on r
+      T = door on top of corner
+      s = door on left of corner
+
+    _ = door on top
+    L = door on left
+    
 """
 layout = [
     "          ",
@@ -31,9 +41,10 @@ layout = [
     " l l   L L",
     " r--_-r-rl",
     " l    L Ll",
-    " --_-----."
+    " --_----- "
 ]
 
+#The values the letter provides
 """
 'x':[top wall, left wall, top door, left door]
 """
@@ -47,10 +58,13 @@ layout_ref = {
     'l':[False, True, False, False],
     'L':[False, True, False, True],
     ' ':[False, False, False, False],
-    '.':[False, False, False, False]
+    #'.':[False, False, False, False] - unused, was going to be small dot to complete corner
 }
 
-#Initialising controls
+
+
+#Initialises controls, the arrow keys can be uncommented to use those instead of wasd
+
 ##key_up = pygame.K_UP
 ##key_down = pygame.K_DOWN
 ##key_left = pygame.K_LEFT
@@ -62,23 +76,17 @@ key_left = pygame.K_a
 key_right = pygame.K_d
 key_space = pygame.K_SPACE
 
-#Game
+#Initialises lists used and sets the top_left value of the board
 top_left = [100, 100]
 list_of_doors = []
 list_of_walls = []
 list_of_objects = []
 
-directions = [
-    'up',
-    'down',
-    'left',
-    'right'
-]
-
-
+#Reads the layout list and gives numerical values to the dimensions of the board
 number_rows = len(layout)
 number_cols = len(layout[0])
 
+#A list comprehension to initialise the 2D list of the board so that object Squares can be added to the coordinates
 square = [[y for y in range(number_rows)] for x in range(number_cols)]
 
 #FPS
