@@ -7,7 +7,7 @@ c = {
     'bl': (  0,   0,   0),
     'bu': (  0,   0, 255),
     're': (255,   0,   0),
-    'gr': (  0, 255,   0),
+    'gr': (  0, 155,   0),
     'ma': (128,   0,   0),
     'na': (  0,   0, 128),
     'pu': (128,   0, 128),
@@ -17,27 +17,6 @@ c = {
 
 bg_color = c['si']
 
-#Initialising controls
-key_up = pygame.K_UP
-key_down = pygame.K_DOWN
-key_left = pygame.K_LEFT
-key_right = pygame.K_RIGHT
-
-#Game
-top_left = [100, 100]
-
-#### Empty House
-##layout = [
-##    "          ",
-##    " r-------l",
-##    " l       l",
-##    " l       l",
-##    " l       l",
-##    " l       l",
-##    " l       l",
-##    " --------."
-##]
-####Layout from the game
 """
 doors:
     r:
@@ -56,48 +35,46 @@ layout = [
 ]
 
 """
-'x':[
-    [top wall, door],
-    [left wall, door]
+'x':[top wall, left wall, top door, left door]
 """
+
 layout_ref = {
-    'r':[
-        [True, False],
-        [True, False]
-    ],
-    's':[
-        [True, False],
-        [True, True]
-    ],
-    'T':[
-        [True, True],
-        [True, False]
-    ],
-    '-':[
-        [True,False],
-        [False,False]
-    ],
-    '_':[
-        [True, True],
-        [False, False]
-    ],
-    'l':[
-        [False, False],
-        [True, False]
-    ],
-    'L':[
-        [False, False],
-        [True, True]
-    ],
-    ' ':[
-        [False, False],
-        [False, False]
-    ],
-    '.':[
-        [False, False],
-        [False, False]
-    ]
+    'r':[True, True, False, False],
+    's':[True, True, False, True],
+    'T':[True, True, True, False],
+    '-':[True, False, False, False],
+    '_':[True, False, True, False],
+    'l':[False, True, False, False],
+    'L':[False, True, False, True],
+    ' ':[False, False, False, False],
+    '.':[False, False, False, False]
 }
+
+#Initialising controls
+##key_up = pygame.K_UP
+##key_down = pygame.K_DOWN
+##key_left = pygame.K_LEFT
+##key_right = pygame.K_RIGHT
+
+key_up = pygame.K_w
+key_down = pygame.K_s
+key_left = pygame.K_a
+key_right = pygame.K_d
+key_space = pygame.K_SPACE
+
+#Game
+top_left = [100, 100]
+list_of_doors = []
+list_of_walls = []
+list_of_objects = []
+
+directions = [
+    'up',
+    'down',
+    'left',
+    'right'
+]
+
 
 number_rows = len(layout)
 number_cols = len(layout[0])
@@ -113,3 +90,17 @@ scr_width = top_left[0]*2 + 80*(number_cols-1)
 scr_height = top_left[1]*2 + 80*(number_rows-1)
 screen = pygame.display.set_mode((scr_width, scr_height))
 pygame.display.set_caption('Flashpoint')
+
+
+#### Empty House
+##layout = [
+##    "          ",
+##    " r-------l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " l       l",
+##    " --------."
+##]
+
