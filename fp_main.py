@@ -40,6 +40,8 @@ def main():
 
 main()
 
+#Below loop can be used for debugging as it restarts instead of crashing
+
 ##while True:
 ##    try:
 ##        main()

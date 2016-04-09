@@ -11,9 +11,6 @@ Some information to get started:
 
 Current Tasks:
 
- - Fixing the movement (Done)
- - Making the walls stop movement (Done)
- - Adding doors (Halfway done)
+ - Improving the import structure
  - Adding fire mechanic
- - Add comments to code
 
